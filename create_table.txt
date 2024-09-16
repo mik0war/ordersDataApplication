@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS ProductOrder;
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Order_;
+
+CREATE TABLE Order_(
+	OrderId SERIAL PRIMARY KEY,
+	user_fio VARCHAR(250),
+	description VARCHAR(500),
+	date_time TIMESTAMP
+);
+
+CREATE TABLE Product(
+	ProductId SERIAL PRIMARY KEY,
+	name_ VARCHAR(50),
+	cost FLOAT
+);
+
+CREATE TABLE ProductOrder(
+	OrderId INT REFERENCES Order_(OrderId),
+	ProductId INT REFERENCES Product(ProductId),
+	Count INT,
+	PRIMARY KEY(OrderId, ProductId)
+
+)
